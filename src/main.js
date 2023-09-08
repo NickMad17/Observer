@@ -4,7 +4,7 @@ import "./css/main.css";
 import { getContext } from "./components/context.js";
 import { renderApp } from "./components/render.js";
 import { getStatus, getCode, updateRoom, updateCode } from "./socket-events.js";
-import { getFiletree } from "./components/filetree.js";
+import { deleteDuplicates, getFiletree } from "./components/filetree.js";
 import hljs from "./hljs";
 import { checkActiveFiles } from "./components/active-files.js";
 
@@ -57,7 +57,9 @@ getCode((data) => {
     renderApp(appElement, context);
 });
 updateCode((data) => {
-    context.files = [...context.files, data.files[0]];
+    deleteDuplicates(data.files, (files) => {
+        context.files = [...context.files, ...files];
+    });
 
     console.log(context);
 });

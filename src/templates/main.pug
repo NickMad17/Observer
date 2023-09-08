@@ -32,20 +32,20 @@
                         .code__tree-section.file(class=`code__tree-section--level-${file.level} ${
                             file.isActive ? 'code__tree-section--active' : ''
                         }`)
-                            img(src="./img/file.svg" alt="file")
+                            img(src="./public/img/file.svg" alt="file")
                             span.code__tree-name(class=`${
                                 file.isActive ? 'code__tree-name--active' : ''
                             }`)= file.name
                     else if file.type === 'folder' && file.status !== 'removed'
                         .code__tree-section(class=`code__tree-section--level-${file.level}`)
-                            img(src="./img/folder.svg" alt="folder")
+                            img(src="./public/img/folder.svg" alt="folder")
                             span.code__tree-name= file.name
                         each dirFile in context.filetree[file.name].files
                             if file.status !== 'removed'
                                 .code__tree-section.file(class=`code__tree-section--level-${dirFile.level} ${
                                     dirFile.isActive ? 'code__tree-section--active' : ''
                                 }`)
-                                    img(src="./img/file.svg" alt="file")
+                                    img(src="./public/img/file.svg" alt="file")
                                     span.code__tree-name(class=`${
                                         dirFile.isActive ? 'code__tree-name--active' : ''
                                     }`)= dirFile.name

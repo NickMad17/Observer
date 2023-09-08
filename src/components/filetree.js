@@ -55,6 +55,10 @@ export const getFiletree = (files) => {
     return tree;
 };
 
-export const deleteDuplicates = (files, set) => {
-    set(files);
-};
+// export const deleteDuplicates = (files, set) => {
+//     // const names = [];
+
+//     // files.forEach(file)
+
+//     // set(uniqueFiles);
+// };
