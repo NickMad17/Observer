@@ -126,6 +126,7 @@
         min-height: 619px;
         background: $work-background;
         border-radius: 7px;
+        overflow: auto;
         display: flex;
 
         &--empty {
@@ -144,6 +145,7 @@
             &__filetree {
                 width: 197px;
                 padding-top: 7px;
+                overflow: auto;
                 display: flex;
                 flex-direction: column;
                 gap: 14px;
@@ -193,6 +195,7 @@
                 & code {
                     width: 773px;
                     height: 615px;
+                    font-size: 16px;
                 }
             }
         }

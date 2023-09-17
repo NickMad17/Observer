@@ -21,12 +21,12 @@ getStatus((status, log) => {
     renderApp(appElement, context);
 });
 updateRoom((isStart, data) => {
+    context.code = null;
     context.isStart = isStart;
     context.room = data;
 
     if (!context.room.users.find((user) => user.isActive)) {
         context.filetree = null;
-        context.code = null;
         context.activeFileName = null;
     }
 
@@ -60,6 +60,8 @@ getCode((data) => {
     renderApp(appElement, context);
 });
 updateCode((data) => {
+    context.code = null;
+
     removeExtraFiles([...context.files, ...data.files], (result) => {
         context.filetree = getFiletree(result);
     });
