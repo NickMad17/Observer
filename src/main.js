@@ -3,7 +3,13 @@
 import "./css/main.css";
 import { getContext } from "./components/context.js";
 import { renderApp } from "./components/render.js";
-import { getStatus, getCode, updateRoom, updateCode } from "./socket-events.js";
+import {
+    getStatus,
+    getCode,
+    updateRoom,
+    updateCode,
+    disconnect,
+} from "./socket-events.js";
 import { getFiletree, removeExtraFiles } from "./components/filetree.js";
 import { getActiveFile } from "./components/active-files.js";
 
@@ -75,4 +81,9 @@ updateCode((data) => {
     });
 
     getActiveFile(context.activeFileName, context);
+});
+disconnect((status) => {
+    context.isOnline = status;
+
+    renderApp(appElement, context);
 });
