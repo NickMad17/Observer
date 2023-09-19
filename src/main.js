@@ -12,6 +12,7 @@ import {
     getSignal,
 } from "./socket-events.js";
 import { getFiletree, removeExtraFiles } from "./components/filetree.js";
+import hljs from "./hljs.js";
 import { getActiveFile } from "./components/active-files.js";
 
 export const appElement = document.querySelector("#app");
@@ -47,10 +48,10 @@ updateRoom((isStart, data) => {
         context.activeFileName = null;
     }
 
-    if (context.activeFileName) {
-        getActiveFile(context.activeFileName, context);
-    } else {
-        renderApp(appElement, context);
+    renderApp(appElement, context);
+
+    if (context.code) {
+        hljs.highlightAll(codeElement);
     }
 });
 getCode((data) => {
@@ -58,6 +59,7 @@ getCode((data) => {
     context.activeFileName = null;
     context.files = data.files;
     context.filetree = getFiletree(data.files);
+
     context.room.users.map((user) => {
         if (user.id === context.activeUserId) {
             user.isActive = true;
@@ -83,7 +85,7 @@ updateCode((data) => {
         }
     });
 
-    getActiveFile(context.activeFileName, context);
+    getActiveFile(context);
 });
 disconnect((status) => {
     context.isDisconnected = status;
@@ -95,7 +97,14 @@ getSignal((data) => {
         if (user.id === data.user_id) {
             user.signal = data.value;
         }
-    });
 
+        if (user.isActive) {
+            user.signal = "NONE";
+        }
+    });
     renderApp(appElement, context);
+
+    if (context.code) {
+        hljs.highlightAll(codeElement);
+    }
 });

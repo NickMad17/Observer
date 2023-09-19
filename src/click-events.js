@@ -40,7 +40,7 @@ export const initClickingFiles = () => {
         element.addEventListener("click", () => {
             context.activeFileName = element.textContent;
 
-            getActiveFile(context.activeFileName, context);
+            getActiveFile(context);
         });
     });
 };
