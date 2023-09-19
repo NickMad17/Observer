@@ -1,4 +1,5 @@
 import {
+    closeRoom,
     createRoom,
     endStudent,
     reconnect,
@@ -56,5 +57,17 @@ export const initReconnecting = () => {
             user_id: context.room.users[0].id,
             room_id: context.room.id,
         });
+    });
+};
+export const initQuitRoom = () => {
+    const quitElement = document.querySelector("#quit");
+
+    quitElement?.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        context.isStart = true;
+
+        renderApp(appElement, context);
+        closeRoom({ room_id: context.room.id });
     });
 };

@@ -9,6 +9,7 @@ import {
     updateRoom,
     updateCode,
     disconnect,
+    getSignal,
 } from "./socket-events.js";
 import { getFiletree, removeExtraFiles } from "./components/filetree.js";
 import { getActiveFile } from "./components/active-files.js";
@@ -17,7 +18,6 @@ export const appElement = document.querySelector("#app");
 export const codeElement = document.querySelector("code");
 export const context = getContext();
 
-renderApp(appElement, context);
 getStatus((status, log) => {
     context.isOnline = status;
     context.hostName = `${log.message.split(" ")[0]} ${
@@ -39,6 +39,7 @@ updateRoom((isStart, data) => {
             user.isActive = false;
         }
     });
+    context.room.users.map((user) => (user.signal = "NONE"));
 
     if (!context.room.users.find((user) => user.isActive)) {
         context.filetree = null;
@@ -86,6 +87,15 @@ updateCode((data) => {
 });
 disconnect((status) => {
     context.isDisconnected = status;
+
+    renderApp(appElement, context);
+});
+getSignal((data) => {
+    context.room.users.map((user) => {
+        if (user.id === data.user_id) {
+            user.signal = data.value;
+        }
+    });
 
     renderApp(appElement, context);
 });
