@@ -12,10 +12,6 @@ export const getSignal = () => {
             if (user.id === data.user_id) {
                 user.signal = data.value;
             }
-
-            if (user.isActive) {
-                user.signal = "NONE";
-            }
         });
         renderApp(appElement, context);
 

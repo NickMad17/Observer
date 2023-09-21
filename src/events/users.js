@@ -22,6 +22,7 @@ export const initClickingUsers = () => {
     userElements.forEach((user) => {
         user.addEventListener("click", () => {
             context.activeUserId = +user.id;
+            context.isShowingTask = false;
 
             userElements.forEach((user) => {
                 if (context.activeUserId === +user.id) {

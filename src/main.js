@@ -10,7 +10,7 @@ import { getSignal } from "./events/signals.js";
 
 export const appElement = document.querySelector("#app");
 export const codeElement = document.querySelector("code");
-export const context = new Context(true, false);
+export const context = new Context(true, false, true);
 
 getStatus((status, log) => {
     context.isOnline = status;

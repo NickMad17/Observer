@@ -19,6 +19,8 @@ export const initCreatingRoom = () => {
     const createElement = document.querySelector("#create-room");
 
     createElement.addEventListener("click", () => {
+        context.isClosed = false;
+
         createRoom(context.hostName);
     });
 };
@@ -48,7 +50,9 @@ export const updateRoom = () => {
             context.activeFileName = null;
         }
 
-        renderApp(appElement, context);
+        if (!context.isClosed) {
+            renderApp(appElement, context);
+        }
 
         if (context.code) {
             hljs.highlightAll(codeElement);
@@ -61,6 +65,7 @@ export const initQuitRoom = () => {
     quitElement?.addEventListener("click", (event) => {
         event.preventDefault();
 
+        context.isClosed = true;
         context.isStart = true;
 
         renderApp(appElement, context);

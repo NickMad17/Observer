@@ -3,7 +3,8 @@ import main from "./templates/main.pug";
 import { initCreatingRoom, initQuitRoom } from "./events/room.js";
 import { initClickingUsers } from "./events/users.js";
 import { initClickingFiles } from "./events/files.js";
-import { initReconnecting } from "./events/connect-disconnect";
+import { initReconnecting } from "./events/connect-disconnect.js";
+import { initOpeningTask, initSendingTask } from "./events/task.js";
 
 export const renderApp = (appElement, context) => {
     if (context.isStart) {
@@ -17,5 +18,7 @@ export const renderApp = (appElement, context) => {
         initClickingFiles();
         initReconnecting();
         initQuitRoom();
+        initOpeningTask();
+        initSendingTask();
     }
 };
