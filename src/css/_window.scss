@@ -194,10 +194,9 @@
     }
 
     &__code {
-        min-height: 619px;
+        height: 619px;
         background: $work-background;
         border-radius: 7px;
-        overflow: auto;
         display: flex;
 
         &--empty {
@@ -216,11 +215,26 @@
     .code {
         &__filetree {
             width: 197px;
-            padding-top: 7px;
-            overflow: auto;
+            height: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
             display: flex;
             flex-direction: column;
             gap: 14px;
+            overflow: auto;
+            scrollbar-width: 0;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+                height: 5px;
+                background-color: #fff;
+                border-radius: 5px;
+            }
         }
 
         &__tree-section {
@@ -251,7 +265,7 @@
         &__tree-name {
             color: $font-color;
             font-size: 16px;
-            line-height: 20px;
+            line-height: 18px;
             opacity: 0.7;
             cursor: default;
 
@@ -262,13 +276,25 @@
 
         &__show-screen {
             height: 100%;
-            flex-grow: 1;
+            overflow: hidden;
 
             & code {
-                width: 900px;
-                height: 615px;
+                width: 1000px;
+                height: 100%;
                 font-size: 16px;
-                overflow-x: auto;
+                overflow: auto;
+                scrollbar-width: 0;
+
+                &::-webkit-scrollbar {
+                    width: 0;
+                }
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #fff;
+                    border-radius: 5px;
+                }
             }
         }
 
