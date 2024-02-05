@@ -8,6 +8,7 @@ export const handleNotion = () => {
 
     notionInputElement?.addEventListener("click", () => {
         if (context.isNotion) {
+            //TODO: создать обьект состояния notionImporter 
             context.isNotion = false;
             context.notionError = false;
 

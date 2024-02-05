@@ -19,7 +19,7 @@ class Context {
         this.server = "ws://84.38.181.252";
         this.pluginUrl =
             "https://github.com/Hybusa/observer_java/blob/Singleton_refactor/build/distributions/Observer%20App-1.2.5.zip";
-        this.taskNumber = localStorage.getItem("TASK_NUMBER")
+        this.taskNumber = 1
             ? localStorage.getItem("TASK_NUMBER")
             : 1;
         this.isNotion = isNotion;
