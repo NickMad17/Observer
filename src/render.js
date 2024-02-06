@@ -11,7 +11,7 @@ import { handleRehostRoom } from "./components/room/rehost-room.js";
 import { handleInvite } from "./utils/handle-invite.js";
 import { handleCloseRoom } from "./components/room/close-room.js";
 import { handleOpenTaskEditor } from "./components/tasks/open-task-editor.js";
-import { handleSendTasks } from "./components/tasks/send-tasks.js";
+import { createTasks } from "./components/tasks/create-tasks.js";
 import { handleNotion } from "./components/tasks/notion.js";
 import { handleSelectUser } from "./components/sharing/select-user.js";
 import { handleSelectFile } from "./components/sharing/select-file.js";
@@ -72,7 +72,7 @@ export const render = (context, events = []) => {
         handleInvite();
         handleCloseRoom();
         handleOpenTaskEditor();
-        handleSendTasks();
+        createTasks();
         handleNotion();
         handleSelectUser();
         handleSelectFile();

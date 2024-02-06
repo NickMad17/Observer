@@ -20,7 +20,7 @@
                 input.task-editor__work(type="radio" value="Теория" name="work" id="work-teory" checked="theory" === context.taskNumber)
                 label.task-editor__work-label(for="work-teory") Теория
 
-        button(class= context.isSent ? "task-editor__button-sent" : "task-editor__button")#send-task= context.isSent ? "Отправлено" : "Отправить"                    
+        button(class= context.submitTasks ? "task-editor__button-sent" : "task-editor__button")#send-task= context.submitTasks ? "Отправлено" : "Отправить"                    
     .task-editor__area#task-area
             
 .task-editor__notion.notion

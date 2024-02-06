@@ -6,7 +6,7 @@ class Context {
         isOnline,
         isShowingTask,
         currentAddress,
-        isSent,
+        submitTasks,
         allMessages,
         isNotion,
     ) {
@@ -14,7 +14,7 @@ class Context {
         this.isOnline = isOnline;
         this.isShowingTask = isShowingTask;
         this.currentAddress = currentAddress;
-        this.isSent = isSent;
+        this.submitTasks = submitTasks;
         this.allMessages = allMessages;
         this.server = "ws://84.38.181.252";
         this.pluginUrl =

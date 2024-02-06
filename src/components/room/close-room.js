@@ -23,7 +23,7 @@ export const handleCloseRoom = () => {
         context.isClosed = true;
         context.isStart = true;
         context.currentAddress = store.server;
-        context.isSent = false;
+        context.submitTasks = false;
         context.taskNumber = 1;
 
         localStorage.removeItem("ROOM_ID");
